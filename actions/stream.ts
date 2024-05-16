@@ -16,7 +16,7 @@ export const updateStream = async (values: Partial<Stream>) => {
         if (!selfStream) throw new Error("Stream not found");
 
         const validData = {
-			//thumbnailUrl: values.thumbnailUrl,
+			thumbnailUrl: values.thumbnailUrl,
 			name: values.name,
 			isChatEnabled: values.isChatEnabled,
 			isChatFollowersOnly: values.isChatFollowersOnly,

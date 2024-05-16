@@ -11,11 +11,16 @@ import { useChatSidebar } from "@/store/use-chat-sidebar";
 import { ChatToggle } from "./Chat-toggle";
 import { ChatHeaderSkeleton } from "./chat-header";
 import { InfoCard } from "./info-card";
+import { AboutCard } from "./about-card";
+import { Header } from "./header";
 //import { Header } from "./header";
 
 
 interface StreamPlayerProps {
-    user: User & { stream: Stream | null};
+    user: User & {
+         stream: Stream | null
+         _count: { followedBy: number}
+    };
     stream: Stream;
     isFollowing: boolean;
 }
@@ -58,19 +63,26 @@ export const StreamPlayer = ({
             hostName={user.username}
             hostIdentity={user.id}
             />
-            					{/*<Header
+            			<Header
 						hostName={user.username}
 						hostIdentity={user.id}
 						viewerIdentity={identity}
 						imageUrl={user.imageUrl}
 						isFollowing={isFollowing}
 						name={stream.name}
-    />*/}
+    />
 	<InfoCard
 						hostIdentity={user.id}
 						viewerIdentity={identity}
 						name={stream.name}
 						thumbnailUrl={stream.thumbnailUrl}
+					/>
+                    	<AboutCard
+						hostName={user.username}
+						hostIdentity={user.id}
+						viewerIdentity={identity}
+						bio={user.bio}
+						followedByCount={user._count.followedBy}
 					/>
         </div>
         <div className={cn(
