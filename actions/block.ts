@@ -1,10 +1,12 @@
 "use server";
+import { getSelf } from "@/lib/auth-service";
 import { blockUser, unblockUser } from "@/lib/block-service";
 import { revalidatePath } from "next/cache";
 
 export const onBlock = async (id: string) => {
       // toDo: Adapt to disconnect from livestream
   // toDo: Allow ability to kick the guest
+  const self = await getSelf();
 
     const blockedUser = await blockUser(id);
 
