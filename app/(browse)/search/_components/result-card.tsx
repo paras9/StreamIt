@@ -3,11 +3,18 @@ import VerifiedMark from "@/components/ui/verified-marks";
 import { formatDistanceToNow } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";
 
-import { Stream, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import Link from "next/link";
 
 interface ResultCardProps {
-    data: Stream & {user:User};
+    data: {
+        id: string;
+        name: string;
+        thumbnailUrl: string | null;
+        isLive: boolean;
+        updatedAt: Date;
+        user: User,
+    }
 };
 
 export const ResultCard = ({
